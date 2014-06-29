@@ -31,4 +31,5 @@ gem 'faker'
 gem 'tzinfo-data'
 gem 'tzinfo'
 
-gem 'simple_form'
+gem 'simple_form', "3.1.0.rc1"
+gem 'mail_form'

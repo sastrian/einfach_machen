@@ -1,21 +1,30 @@
-<div class="navbar navbar-default">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			</button>        
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav nav-pills">								
-				<li class="<%= 'active' if (params[:controller] == 'home') %>"><%= link_to("home", pages_home_path) %></li>
-				<li class="<%= 'active' if (params[:controller] == 'what') %>"><%= link_to("what do i offer", pages_what_path) %></li>
-				<li class="<%= 'active' if (params[:controller] == 'who') %>"><%= link_to("who am i", pages_who_path) %></li>
-				<li class="<%= 'active' if (params[:controller] == 'pearl') %>"><%= link_to("weekly pearls", pages_pearl_path) %></li>
-				<li class="<%= 'active' if (params[:controller] == 'forum') %>"><%= link_to("forum", pages_forum_path) %></li>
-				<li class="<%= 'active' if (params[:controller] == 'contact') %>"><%= link_to("contact", pages_contact_path) %></li>
-			</ul>
-		</div><!--/.nav-collapse -->
-	</div>
-</div>
+<nav role="navigation" class="navbar navbar-inverse">    
+    <div class="navbar-header">
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>   
+    </div>
+    
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+        	<li><%= link_to("Einfach machen", root_path) %></li>                        
+            <li><%= link_to("Was biete ich", pages_what_path) %></li>
+            <li><%= link_to("Wer bin ich", pages_who_path) %></li>
+            <li><%= link_to("Wochen-Perlen", pages_pearl_path) %></li>
+            <li><%= link_to("Forum", pages_forum_path) %></li>            
+        </ul>
+        <form role="search" class="navbar-form navbar-left">
+            <div class="form-group">
+                <input type="text" placeholder="Search" class="form-control">
+            </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">        	
+            <li><%= link_to("Kontakt", pages_contact_path) %></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div>
+</nav>
+

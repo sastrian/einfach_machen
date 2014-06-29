@@ -1,5 +1,15 @@
 <div id="footer">
-  <div class="container">
-    <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+	<div class="center-block">
+  <ul class="nav navbar-nav">
+	<% if user_signed_in? %>	  
+		<li><%= link_to "Sign out " + current_user.email, destroy_user_session_path, :method => :delete %></li>				
+	<% else %>
+	    <%= link_to("Sign in", new_user_session_path, :class => "btn btn-xs btn-primary") %>
+		<%= link_to("Sign up", new_user_registration_path, :class => "btn btn-xs btn-success") %>			
+	<% end %>
+	</ul>	
+	<br />
+    copyright Maro Bader <%= DateTime.now %>
   </div>
+</div>
 </div>
