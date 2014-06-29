@@ -15,15 +15,15 @@
             <li><%= link_to("Wer bin ich", pages_who_path) %></li>
             <li><%= link_to("Wochen-Perlen", pages_pearl_path) %></li>
             <li><%= link_to("Forum", pages_forum_path) %></li>            
-        </ul>
-        <form role="search" class="navbar-form navbar-left">
-            <div class="form-group">
-                <input type="text" placeholder="Search" class="form-control">
-            </div>
-        </form>
+        </ul>        
         <ul class="nav navbar-nav navbar-right">        	
-            <li><%= link_to("Kontakt", pages_contact_path) %></li>
-            <li><a href="#">Login</a></li>
+            <li><%= link_to("Kontakt", pages_contact_path) %></li>            
+            <% if user_signed_in? %>
+            	<li><%= link_to("Logout", destroy_user_session_path, :method => :delete) %></li>
+            <% else %>
+            	<li><%= link_to("Login", new_user_session_path) %></li>
+            <% end %>
+            
         </ul>
     </div>
 </nav>

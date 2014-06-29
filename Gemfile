@@ -33,3 +33,4 @@ gem 'tzinfo'
 
 gem 'simple_form', "3.1.0.rc1"
 gem 'mail_form'
+gem 'carrierwave'

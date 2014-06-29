@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627131851) do
+ActiveRecord::Schema.define(version: 20140629193009) do
+
+  create_table "pearls", force: true do |t|
+    t.integer  "user_id"
+    t.string   "body"
+    t.string   "title"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pearls", ["user_id"], name: "index_pearls_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

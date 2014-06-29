@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   end
 
   def pearl
+    @pearls = Pearl.all
   end
 
   def forum

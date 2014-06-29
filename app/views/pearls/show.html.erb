@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pearl.user %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @pearl.body %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pearl.title %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @pearl.image %>
+</p>
+
+<%= link_to 'Edit', edit_pearl_path(@pearl) %> |
+<%= link_to 'Back', pearls_path %>
