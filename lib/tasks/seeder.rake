@@ -37,7 +37,7 @@ namespace :db do
         pearl = Pearl.create!(title: title, body: body, user: users.sample(1).first) 	 
     end
     
-    puts "added " + args.:n_pearls.to_s + " pearls"    
+    puts "added " + args.n_pearls.to_s + " pearls"    
   end
   
   desc "fills table with small amount of random values"
