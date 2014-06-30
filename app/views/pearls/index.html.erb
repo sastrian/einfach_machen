@@ -17,7 +17,7 @@
         <td><%= pearl.user %></td>
         <td><%= pearl.body %></td>
         <td><%= pearl.title %></td>
-        <td><%= pearl.image %></td>
+        <td><%= image_tag @pearl.image_url(:thumb).to_s if @pearl.image_url.present?, class => "img-responsive col-md-2" %></td>
         <td><%= link_to 'Show', pearl %></td>
         <td><%= link_to 'Edit', edit_pearl_path(pearl) %></td>
         <td><%= link_to 'Destroy', pearl, method: :delete, data: { confirm: 'Are you sure?' } %></td>

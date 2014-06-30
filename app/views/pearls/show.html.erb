@@ -17,8 +17,8 @@
 
 
 <p>
-  <strong>Image:</strong>
-  <%= @pearl.image %>
+  <strong>Image:</strong>  
+  <%= image_tag (@pearl.image_url.to_s if @pearl.image_url.present?), class => "img-responsive col-md-4" %>
 </p>
 
 <%= link_to 'Edit', edit_pearl_path(@pearl) %> |
