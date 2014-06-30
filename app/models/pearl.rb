@@ -1,5 +1,4 @@
-class Pearl < ActiveRecord::Base
+class Pearl < ActiveRecord::Base  
   belongs_to :user
-  mount_uploader :image, ImageUploader
-  
+  mount_uploader :image, ImageUploader   
 end

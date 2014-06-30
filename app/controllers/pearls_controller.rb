@@ -69,6 +69,6 @@ class PearlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pearl_params
-      params.require(:pearl).permit(:user_id, :body, :title, :image)
+      params.require(:pearl).permit(:user_id, :body, :title, :image, :remove_image)
     end
 end

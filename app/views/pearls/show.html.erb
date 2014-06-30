@@ -1,4 +1,7 @@
 <h3><%= @pearl.title %></h3>
+von <%= @pearl.user.username %>
+<br/>
+<br/>
 
 <div class="container-fluid">	
 	<% if @pearl.image_url.present? %>			
@@ -8,7 +11,16 @@
     <%= @pearl.body %>    
 </div>
 <br/>
-<%= link_to 'Edit', edit_pearl_path(@pearl) %>
+<%= link_to 'zurück', pages_pearl_path(), :class => "btn btn-info btn-xs col-md-2" %>
 <br/>
 <br/>
 <br/>
+<% if (user_signed_in? && (current_user.id == @pearl.user_id)) %>			
+	<div class="btn-toolbar">		
+		<%= link_to 'Ändern', edit_pearl_path(@pearl), :class => "btn btn-warning btn-xs col-md-2" %> 
+		<%= button_to 'Löschen', @pearl, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs col-md-2" %>
+	</div>
+	<br/>
+<br/>
+<br/>
+<% end %>
