@@ -20,7 +20,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'einfach-machen.ch',
     user_name:            'maro.bader',
-    password:             'BaNaN3NjO;17',
+    password:             'oldpw',
     authentication:       'plain',
     enable_starttls_auto: true  }
   
