@@ -1,2 +1,21 @@
-<h3>Pages#pearl</h3>
-<p>Find me in app/views/pages/pearl.html.erb</p>
+<h3>Gedanken</h3>
+<p>und solche die es wert sind zu werden</p>
+
+<%= will_paginate @pearls, renderer: BootstrapPagination::Rails %> <br/>
+
+<% @pearls.each do |pearl| %>
+<a href="<%= pearl_path(pearl) %>" class="block_link">
+	<div class="col-md-6 boxed-pearl">
+		<div class="inner-pearl">
+			<% if pearl.image_url.present? %>			
+	        	<%= image_tag(pearl.image_url, :class => "img-responsive fixed_height") %>
+	        <% end %>	        	        
+	        <strong><%= pearl.title %></strong><br />
+	        <%= pearl.body.truncate(80) %>
+        </div>
+	</div>
+</a>
+<% end %>
+
+<br/>
+<%= will_paginate @pearls, renderer: BootstrapPagination::Rails %>

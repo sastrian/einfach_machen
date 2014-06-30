@@ -99,3 +99,26 @@ strong
 {
   width: 100%;
 }
+
+.boxed-pearl
+{
+  padding: 5px;   
+}
+
+.inner-pearl
+{
+  border: solid 1px black;  
+  padding: 5px;     
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fixed_height
+{
+  height: 200px;   
+}
+
+.block_link
+{
+    display: block;
+}

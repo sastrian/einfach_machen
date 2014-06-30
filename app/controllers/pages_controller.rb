@@ -8,8 +8,8 @@ class PagesController < ApplicationController
   def what
   end
 
-  def pearl
-    @pearls = Pearl.all
+  def pearl    
+    @pearls = Pearl.paginate(:page => params[:page], :per_page => 6)
   end
 
   def forum
@@ -22,8 +22,7 @@ class PagesController < ApplicationController
   def contacted
     @contact = Contact.new(params[:contact])
     @contact.request = request
-    if @contact.deliver
-      flash.now[:error] = nil
+    if @contact.deliver      
       flash.now[:notice] = 'Thank you for your message!'
     else
       flash.now[:error] = 'Cannot send message.'

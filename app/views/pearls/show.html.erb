@@ -1,25 +1,14 @@
-<p id="notice"><%= notice %></p>
+<h3><%= @pearl.title %></h3>
 
-<p>
-  <strong>User:</strong>
-  <%= @pearl.user %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @pearl.body %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @pearl.title %>
-</p>
-
-
-<p>
-  <strong>Image:</strong>  
-  <%= image_tag (@pearl.image_url.to_s if @pearl.image_url.present?), class => "img-responsive col-md-4" %>
-</p>
-
-<%= link_to 'Edit', edit_pearl_path(@pearl) %> |
-<%= link_to 'Back', pearls_path %>
+<div class="container-fluid">	
+	<% if @pearl.image_url.present? %>			
+    	<%= image_tag(@pearl.image_url, :class => "img-responsive") %>
+    <% end %>	        	        
+    <br />
+    <%= @pearl.body %>    
+</div>
+<br/>
+<%= link_to 'Edit', edit_pearl_path(@pearl) %>
+<br/>
+<br/>
+<br/>

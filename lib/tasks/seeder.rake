@@ -7,19 +7,21 @@ namespace :db do
     
     Pearl.delete_all
     puts "deleted all pearls"     
+    
+    FileUtils.rm_rf(Rails.root.join('public', 'uploads', 'pearl'))
+    puts "deleting upload folder"
   end
   
   desc "create n_users new random users"
   task :create_users, [:n_users] => :environment do |t, args| # task with two arguments
     args.with_defaults(:n_users => 5)           
     password  = "password"
-    User.create!(name: "Maro Bader", email: "maro.bader@gmail.com",
+    User.create!(username: "sastrian", email: "maro.bader@gmail.com",
                password: password,password_confirmation: password)
     args.n_users.times do |n|
       name  = Faker::Name.name()
       email = Faker::Internet.email(name)      
-      User.create!(name: name,
-                 email: email,
+      User.create!(username: name, email: email,
                  password: password,
                  password_confirmation: password)
     end     
@@ -31,10 +33,11 @@ namespace :db do
     args.with_defaults(:n_pearls => 25)          	
   	users = User.all  	
   	
-    args.n_ideas.times do |n|        
+    args.n_pearls.times do |n|        
         body = Faker::Lorem.sentences(rand(10..20)).to_sentence()
   	    title = Faker::Company.name()
-        pearl = Pearl.create!(title: title, body: body, user: users.sample(1).first) 	 
+  	    image = File.open(File.join(Rails.root,"app/assets/images/p" + (1 + (n.modulo(18))).to_s + ".jpg"  ))
+        pearl = Pearl.create!(title: title, body: body, user: users.sample(1).first, image: image) 	 
     end
     
     puts "added " + args.n_pearls.to_s + " pearls"    
