@@ -1,6 +1,6 @@
 class PearlsController < ApplicationController
   before_action :set_pearl, only: [:show, :edit, :update, :destroy]
-
+  impressionist :actions=>[:show]
   # GET /pearls
   # GET /pearls.json
   def index
@@ -10,6 +10,7 @@ class PearlsController < ApplicationController
   # GET /pearls/1
   # GET /pearls/1.json
   def show
+    impressionist(@pearl)
   end
 
   # GET /pearls/new
@@ -64,7 +65,7 @@ class PearlsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pearl
-      @pearl = Pearl.find(params[:id])
+      @pearl = Pearl.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

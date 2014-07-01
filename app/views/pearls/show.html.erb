@@ -1,5 +1,5 @@
 <h3><%= @pearl.title %></h3>
-von <%= @pearl.user.username %>
+von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen) 
 <br/>
 <br/>
 
@@ -11,7 +11,7 @@ von <%= @pearl.user.username %>
     <%= @pearl.body %>    
 </div>
 <br/>
-<%= link_to 'zurück', pages_pearl_path(), :class => "btn btn-info btn-xs col-md-2" %>
+<%= link_to 'zurück', weekly_pearls_path(), :class => "btn btn-info btn-xs col-md-2" %>
 <br/>
 <br/>
 <br/>

@@ -8,7 +8,7 @@ namespace :db do
     Pearl.delete_all
     puts "deleted all pearls"     
     
-    FileUtils.rm_rf(Rails.root.join('public', 'uploads', 'pearl'))
+    FileUtils.rm_rf(Rails.root.join('public', 'uploads'))
     puts "deleting upload folder"
   end
   

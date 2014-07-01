@@ -19,3 +19,12 @@
 
 <br/>
 <%= will_paginate @pearls, renderer: BootstrapPagination::Rails %>
+
+<% if user_signed_in? %>            	                       
+	<br/>
+	<br/>
+	<%= link_to 'Neue Perle', new_pearl_path, :class => "btn btn-xs btn-success" %>
+<% end %>
+<br/>
+<br/>
+<br/>
