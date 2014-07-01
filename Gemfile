@@ -41,3 +41,5 @@ gem 'will_paginate-bootstrap'
 
 gem 'friendly_id'
 gem 'impressionist'
+
+gem 'ckeditor_rails'

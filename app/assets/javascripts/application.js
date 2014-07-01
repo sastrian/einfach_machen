@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ckeditor-jquery
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+$('.ckeditor').ckeditor({
+  // optional config
+});

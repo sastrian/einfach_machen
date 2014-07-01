@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-      
-    post '/gedanken-perlen(.:format)', to: 'pearls#create'
-    
-    get '/gedanken-perlen/new(.:format)', to: 'pearls#new', as: "new_pearl"
-    
-    get '/gedanken-perlen/:id/edit(.:format)', to: 'pearls#edit', as: "edit_pearl"
-    
-    get '/gedanken-perlen/:id(.:format)', to: 'pearls#show', as: "pearl"
-    patch '/gedanken-perlen/:id(.:format)', to: 'pearls#update' 
-    put '/gedanken-perlen/:id(.:format)', to: 'pearls#update' 
-    delete '/gedanken-perlen/:id(.:format)', to: 'pearls#destroy'  
+          
+  post '/gedanken-perlen(.:format)', to: 'pearls#create'
   
-
+  get '/gedanken-perlen/new(.:format)', to: 'pearls#new', as: "new_pearl"
+  
+  get '/gedanken-perlen/:id/edit(.:format)', to: 'pearls#edit', as: "edit_pearl"
+  
+  get '/gedanken-perlen/:id(.:format)', to: 'pearls#show', as: "pearl"
+  patch '/gedanken-perlen/:id(.:format)', to: 'pearls#update' 
+  put '/gedanken-perlen/:id(.:format)', to: 'pearls#update' 
+  delete '/gedanken-perlen/:id(.:format)', to: 'pearls#destroy'   
 
   root to: 'pages#home'
   
@@ -22,6 +20,7 @@ Rails.application.routes.draw do
   get 'was-biete-ich-an', to: 'pages#what', as: "what_do_i_offer"
 
   get 'gedanken-perlen', to: 'pages#pearl', as: "weekly_pearls"
+  get 'gedanken-perlen', to: 'pages#pearl', as: "pearls"
 
   get 'forum', to: 'pages#forum', as: "forum"
 

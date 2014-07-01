@@ -1,9 +1,20 @@
-<%= simple_form_for(@pearl) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@pearl) do |f| %>
 
-  <div class="form-inputs">
-  	<%= f.input :title, :required => true, label: "Titel" %>       
-    <%= f.input :body, :required => true, label: "Inhalt", :as => :text, :input_html => {:rows => 6} %>        
+
+
+
+
+<% end %>
+  
+
+
+<%= simple_form_for(@pearl) do |f| %>
+
+<%= f.error_notification %>  
+
+  <div class="form-inputs" data-no-turbolink>
+  	<%= f.input :title, :required => true, label: "Titel" %>                 
+    <%= f.text_area :body, class: "ckeditor"  %>           
     <%= f.input :image, label: "Bild" %>
   </div>
 

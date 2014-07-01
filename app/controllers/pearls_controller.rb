@@ -28,7 +28,7 @@ class PearlsController < ApplicationController
   # POST /pearls.json
   def create
     @pearl = Pearl.new(pearl_params)
-
+    @pearl.user = current_user
     respond_to do |format|
       if @pearl.save
         format.html { redirect_to @pearl, notice: 'Perle wurde erfolgreich angelegt.' }

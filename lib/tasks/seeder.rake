@@ -45,14 +45,14 @@ namespace :db do
   
   desc "fills table with small amount of random values"
   task populate_small: :environment do
-    Rake::Task["db:local_reset"].invoke()
+    Rake::Task["db:reset"].invoke()
     Rake::Task["db:create_users"].invoke(7)    
     Rake::Task["db:create_pearls"].invoke(35)   
   end
   
   desc "fills table with large amount of random values"
   task populate_large: :environment do
-    Rake::Task["db:local_reset"].invoke()
+    Rake::Task["db:reset"].invoke()
     Rake::Task["db:create_users"].invoke(100)    
     Rake::Task["db:create_pearls"].invoke(2000)   
   end
