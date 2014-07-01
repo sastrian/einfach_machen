@@ -4,21 +4,38 @@ von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen)
 <br/>
 
 <div class="container-fluid">	
-	<% if @pearl.image_url.present? %>			
-    	<%= image_tag(@pearl.image_url, :class => "img-responsive") %>
+	<% if @pearl.image_url.present? %>
+		<a href="<%= @pearl.image_url %>">			
+    		<%= image_tag(@pearl.image_url, :class => "img-responsive") %>
+    	</a>
     <% end %>	        	        
     <br />
     <%= @pearl.body %>    
 </div>
 <br/>
-<%= link_to 'zurück', weekly_pearls_path(), :class => "btn btn-info btn-xs col-md-2" %>
+<% if @pearl.previous.presence %>	
+<a href="<%= pearl_path(@pearl.previous) %>">		
+	<button type="button" class="btn btn-default btn-xs spaced-btn">
+  		<span class="glyphicon glyphicon-chevron-left"></span> Vorherige
+	</button>
+</a>	
+<% end %>
+<%= link_to 'Übersicht', weekly_pearls_path(), :class => "btn btn-info btn-xs spaced-btn" %>
+<% if @pearl.next.presence %>	
+<a href="<%= pearl_path(@pearl.next) %>">		
+	<button type="button" class="btn btn-default btn-xs spaced-btn">
+  		<span class="glyphicon glyphicon-chevron-right"></span> Nächste
+	</button>
+</a>	
+<% end %>
+
 <br/>
 <br/>
 <br/>
 <% if (user_signed_in? && (current_user.id == @pearl.user_id)) %>			
 	<div class="btn-toolbar">		
-		<%= link_to 'Ändern', edit_pearl_path(@pearl), :class => "btn btn-warning btn-xs col-md-2" %> 
-		<%= button_to 'Löschen', @pearl, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs col-md-2" %>
+		<%= link_to 'Ändern', edit_pearl_path(@pearl), :class => "btn btn-warning btn-xs spaced-btn" %> 
+		<%= button_to 'Löschen', @pearl, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs spaced-btn" %>
 	</div>
 	<br/>
 <br/>

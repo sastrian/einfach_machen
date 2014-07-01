@@ -1,5 +1,7 @@
 class PearlsController < ApplicationController
   before_action :set_pearl, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :make_sure_is_owner, only: [:edit, :update, :destroy]
   impressionist :actions=>[:show]
   # GET /pearls
   # GET /pearls.json
@@ -71,5 +73,17 @@ class PearlsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pearl_params
       params.require(:pearl).permit(:user_id, :body, :title, :image, :remove_image)
+    end
+    
+    def make_sure_is_owner
+      @pearl = Pearl.friendly.find(params[:id])
+      if (user_signed_in? && current_user.id == @pearl.user.id)
+        
+      else        
+        respond_to do |format|      
+          format.html { redirect_to root_url, notice: 'you can only edit your own ideas.' }
+          format.json { head :no_content }          
+        end         
+      end
     end
 end

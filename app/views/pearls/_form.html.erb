@@ -1,19 +1,19 @@
 <%= simple_form_for(@pearl) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">    
-    <%= f.input :body %>
-    <%= f.input :title %>        
-    <%= f.input :image %>
+  <div class="form-inputs">
+  	<%= f.input :title, :required => true, label: "Titel" %>       
+    <%= f.input :body, :required => true, label: "Inhalt", :as => :text, :input_html => {:rows => 6} %>        
+    <%= f.input :image, label: "Bild" %>
   </div>
 
 	<p>    
-		Remove Image
-		<%= image_tag(@pearl.image_url(:thumb)) if @pearl.image? %>
-    	<%= f.check_box :remove_image %>         
+		Remove Image		
+    	<%= f.check_box :remove_image %>
+    	<%= image_tag(@pearl.image_url(:thumb)) if @pearl.image? %>         
   	</p>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn btn-primary btn-sm"  %>
   </div>
 <% end %>
