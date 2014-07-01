@@ -10,8 +10,8 @@
 			<% if pearl.image_url.present? %>			
 	        	<%= image_tag(pearl.image_url, :class => "img-responsive fixed_height") %>
 	        <% end %>	        	        
-	        <strong><%= pearl.title %></strong><br />
-	        <%= pearl.body.truncate(80) %>
+	        <strong><%= pearl.title %></strong><br/>
+	        von <%= pearl.user.username %>
         </div>
 	</div>
 </a>
