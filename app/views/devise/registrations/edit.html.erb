@@ -1,6 +1,6 @@
 <h3>Edit <%= resource_name.to_s.humanize %></h3>
 
-<%= simple_form_for(resource, as: resource_name, :html => {class: 'form-horizontal' }, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, :html => {class: 'form-horizontal', :style=> 'width: 300px'  }, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

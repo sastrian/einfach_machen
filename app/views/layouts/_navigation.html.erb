@@ -9,15 +9,15 @@
     </div>
     
     <div id="navbarCollapse" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-        	<li class="<%= 'active' if params[:controller] == 'pages#home' %>"><%= link_to("Einfach machen", root_path) %></li>                        
-            <li class="<%= 'active' if params[:controller] == 'pages#what' %>"><%= link_to("Was biete ich", what_do_i_offer_path) %></li>
-            <li><%= link_to("Wer bin ich", who_am_i_path) %></li>
-            <li><%= link_to("Wochen-Perlen", weekly_pearls_path) %></li>
-            <li><%= link_to("Forum", forum_path) %></li>            
+        <ul class="nav navbar-nav nav-pills">        	
+        	<%= active_link_to "Einfach machen", root_path, :active => :exclusive, :wrap_tag => :li %>                                    
+            <%= active_link_to "Was biete ich", what_do_i_offer_path, :wrap_tag => :li %>            
+            <%= active_link_to "Wer bin ich", who_am_i_path, :wrap_tag => :li %>
+            <%= active_link_to "Wochen-Perlen", weekly_pearls_path, :wrap_tag => :li %>
+            <%= active_link_to "Forum", forum_path, :wrap_tag => :li %>            
         </ul>        
         <ul class="nav navbar-nav navbar-right">        	
-            <li><%= link_to("Kontakt", contact_path) %></li>            
+            <%= active_link_to "Kontakt", contact_path, :wrap_tag => :li %>                          
             <% if user_signed_in? %>
             	<li><%= link_to("Logout", destroy_user_session_path, :method => :delete) %></li>
             <% else %>

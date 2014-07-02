@@ -1,3 +1,27 @@
 // Place all the styles related to the pearls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.boxed-pearl
+{
+  padding: 5px;   
+}
+
+.inner-pearl
+{
+  border: solid 1px #88CC88;  
+  padding: 5px;     
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fixed_height
+{
+  height: 200px;   
+}
+
+.block_link
+{
+    display: block;
+    text-align: center;    
+}

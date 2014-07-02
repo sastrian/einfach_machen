@@ -10,7 +10,7 @@ von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen)
     	</a>
     <% end %>	        	        
     <br />
-    <%= @pearl.body %>    
+    <%= raw @pearl.body %>    
 </div>
 <br/>
 <% if @pearl.previous.presence %>	
@@ -33,8 +33,8 @@ von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen)
 <br/>
 <br/>
 <% if (user_signed_in? && (current_user.id == @pearl.user_id)) %>			
-	<div class="btn-toolbar">		
-		<%= link_to 'Ändern', edit_pearl_path(@pearl), :class => "btn btn-warning btn-xs spaced-btn" %> 
+	<div class="btn-toolbar" data-no-turbolink>		
+		<%= link_to 'Ändern', edit_pearl_path(@pearl), data: { no_turbolink: true }, :class => "btn btn-warning btn-xs spaced-btn" %> 
 		<%= button_to 'Löschen', @pearl, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs spaced-btn" %>
 	</div>
 	<br/>

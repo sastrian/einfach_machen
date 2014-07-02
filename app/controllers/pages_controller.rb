@@ -26,7 +26,7 @@ class PagesController < ApplicationController
       flash.now[:notice] = 'Thank you for your message!'
     else
       flash.now[:error] = 'Cannot send message.'
-      render :new
+      render :contact
     end
   end
   

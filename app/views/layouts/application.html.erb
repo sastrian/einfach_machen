@@ -51,15 +51,24 @@
 					<div class="row-fluid">		   		
 						<%= render 'layouts/navigation' %>
 					</div>			      
-					<div class="row-fluid">		   				         						    
-						<div class="col-md-8">
+					<div class="row-fluid">		
+												
+						<% if needs_sidepanel? %>
+							<div class="col-md-8">
+								<%= render 'layouts/messages' %>
+								
+								<%= yield %>
+							</div>		
+							<div class="col-md-4">
+								<%= render 'layouts/sidepanel' %>
+							</div>		
+						<% else %>	
+						<div class="col-md-12">
 							<%= render 'layouts/messages' %>
 							
 							<%= yield %>
 						</div>		
-						<div class="col-md-4">
-							<%= render 'layouts/sidepanel' %>
-						</div>				
+						<% end %>	
 					</div><!--/row-->				
 				</div>							    
 			</div>

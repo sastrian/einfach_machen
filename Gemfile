@@ -43,3 +43,5 @@ gem 'friendly_id'
 gem 'impressionist'
 
 gem 'ckeditor_rails'
+
+gem 'active_link_to'

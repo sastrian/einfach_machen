@@ -2,17 +2,6 @@
 
 <div class="container-fluid">
 <%= simple_form_for @contact, :url => pages_contacted_path, :html => {class: 'form-horizontal' } do |f| %>
-<% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h3>
-
-      <ul>
-      <% @contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-<% end %>  
 
   <%=  f.input :nickname, :as => :hidden %>
   <%=  f.input :name, :required => true %>
