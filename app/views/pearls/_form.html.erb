@@ -2,14 +2,17 @@
   <div class="form-inputs">
   	<%= f.input :title, :required => true, label: "Titel" %>                 
     
-    	<%= f.label :body, 'Gedanken', :required => true %>    	
-    	<%= f.text_area :body, class: "ckeditor" %>
-    	<br />
-   	   
-    	<%= f.input :image, label: "Bild" %>	
+	<%= f.label :body, 'Gedanken', :required => true %>    	
+	<%= f.text_area :body, class: "ckeditor" %>
+	<br />
+   
+	<%= f.input :image, label: "Bild" %>
+	
+	<% if @pearl.image_url.present? %>	
 		Remove Image		
-    	<%= f.check_box :remove_image %>
-    	<%= image_tag(@pearl.image_url(:thumb)) if @pearl.image? %>           	
+		<%= f.check_box :remove_image %>
+		<%= image_tag(@pearl.image_url(:thumb)) if @pearl.image? %>
+	<% end %>           	
   </div>
 
 	<br />
