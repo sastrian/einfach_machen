@@ -29,15 +29,12 @@ von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen)
 </a>	
 <% end %>
 
+<% if (user_signed_in? && (current_user.id == @pearl.user_id)) %>
 <br/>
 <br/>
-<br/>
-<% if (user_signed_in? && (current_user.id == @pearl.user_id)) %>			
+<br/>			
 	<div class="btn-toolbar" data-no-turbolink>		
 		<%= link_to 'Ändern', edit_pearl_path(@pearl), data: { no_turbolink: true }, :class => "btn btn-warning btn-xs spaced-btn" %> 
 		<%= button_to 'Löschen', @pearl, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs spaced-btn" %>
 	</div>
-	<br/>
-<br/>
-<br/>
 <% end %>
