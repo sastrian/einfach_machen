@@ -32,12 +32,6 @@
 <br/>
 <br/>
 
-  <%=  f.input :nickname, :as => :hidden %>
-  <%=  f.input :name, :required => true %>
-  <%=  f.input :email, :required => true %>
-  <%=  f.input :message, hint: "Nutzen Sie dieses Forumlar bitte lediglich zur Kontaktaufnahme und zur Verabredung eines kostenlosen Erstgesprächs. Haben Sie bitte Verständnis, dass ich keine inhaltenlichen Fragen per Email beantworte.", :required => true, label: "Nachricht", :as => :text, :required => false, :input_html => {:rows => 6} %>   
-  <%=  f.button :submit, 'Abschicken', :class=> "btn btn-primary" %>
-
 <script type="text/javascript">
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: { }, internal: {id: 'map'}}, function(){
