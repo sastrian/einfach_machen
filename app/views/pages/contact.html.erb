@@ -1,7 +1,36 @@
 <h3>Einfach kontaktieren!</h3>
 
-<div class="container-fluid">
-<%= simple_form_for @contact, :url => pages_contacted_path, :html => {class: 'form-horizontal' } do |f| %>
+<div class="row-fluid">
+	<div class="col-md-8">
+		<div class="container-fluid">
+			<%= simple_form_for @contact, :url => pages_contacted_path, :html => {class: 'form-horizontal' } do |f| %>
+			
+			  <%=  f.input :nickname, :as => :hidden %>
+			  <%=  f.input :name, label: "Ihre Name", :required => true %>
+			  <%=  f.input :email, label: "Ihre Email", :required => true %>
+			  <%=  f.input :message, hint: "Nutzen Sie dieses Forumlar bitte lediglich zur Kontaktaufnahme und zur Verabredung eines kostenlosen Erstgesprächs. Haben Sie bitte Verständnis, dass ich keine inhaltenlichen Fragen per Email beantworte.", :required => true, label: "Nachricht", :as => :text, :required => false, :input_html => {:rows => 6} %>   
+			  <%=  f.button :submit, 'Abschicken', :class=> "btn btn-primary" %>
+			
+			<% end %>
+		</div>
+	</div>		
+	
+	<div class="col-md-4">
+		<p>
+			Maro Bader<br/>
+			Dorfstr. 15<br/>
+			6300 Zug / CH<br/>
+			<br/>
+			Natel: +41 (0)77 / 49 33 589
+		</p>
+		<p>			
+			<div id="map" style='height: 400px;'></div>
+		</p>		
+	</div>	
+</div>
+<br/>
+<br/>
+<br/>
 
   <%=  f.input :nickname, :as => :hidden %>
   <%=  f.input :name, :required => true %>
@@ -9,6 +38,18 @@
   <%=  f.input :message, hint: "Nutzen Sie dieses Forumlar bitte lediglich zur Kontaktaufnahme und zur Verabredung eines kostenlosen Erstgesprächs. Haben Sie bitte Verständnis, dass ich keine inhaltenlichen Fragen per Email beantworte.", :required => true, label: "Nachricht", :as => :text, :required => false, :input_html => {:rows => 6} %>   
   <%=  f.button :submit, 'Abschicken', :class=> "btn btn-primary" %>
 
-<% end %>
-</div>
-
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: { }, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": 47.165631,
+      "lng": 8.517693,      
+      "infowindow": "Dorfstr. 15, 6300 Zug",      
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(12);
+});
+</script>

@@ -45,3 +45,8 @@ gem 'impressionist'
 gem 'ckeditor_rails'
 
 gem 'active_link_to'
+gem 'gmaps4rails'
+
+gem 'forem'
+gem 'forem-bootstrap', :git => "https://github.com/radar/forem-bootstrap.git"
+gem 'forem-redcarpet', :git => "https://github.com/radar/forem-redcarpet.git"
