@@ -3,8 +3,15 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+group :development, :test do # <<<< :development, not devlopment
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
+
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -47,6 +54,3 @@ gem 'ckeditor_rails'
 gem 'active_link_to'
 gem 'gmaps4rails'
 
-gem 'forem'
-gem 'forem-bootstrap', :git => "https://github.com/radar/forem-bootstrap.git"
-gem 'forem-redcarpet', :git => "https://github.com/radar/forem-redcarpet.git"
