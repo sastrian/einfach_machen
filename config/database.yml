@@ -20,9 +20,6 @@ test:
 
 
 production:
-  <<: *default
-  database: em_production
-  username: em
-  password: <%= ENV['em_DATABASE_PASSWORD'] %>
+  <<: *default  
 
 
