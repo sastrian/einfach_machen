@@ -1,5 +1,21 @@
+<% content_for :head do %>
+
+<meta property="og:name" content="<%= @pearl.title %>"/>
+<meta property="og:type" content="<%= @pearl.body %>"/>
+<meta property="og:description" content="link"/>
+<% if @pearl.image_url.present? %>
+	<meta property="og:picture" content="<%= @pearl.image_url(:thumb).to_s %>"/>
+<% end %>
+<meta property="og:url" content="<%= pearl_path(@pearl) %>"/>
+
+<% end %>
+<%= link_to image_tag('facebook.png'), 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank %>
+
+
 <h3><%= @pearl.title %></h3>
 von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen) 
+<br/>
+<%= social_share_button_tag(@pearl.title, :url => pearl_path(@pearl), :image => @pearl.image_url(:thumb).to_s,  :img => @pearl.image_url(:thumb).to_s) %>	
 <br/>
 <br/>
 
@@ -29,7 +45,7 @@ von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen)
 </a>	
 <% end %>
 
-<% if (user_signed_in? && (current_user.id == @pearl.user_id)) %>
+<% if ((user_signed_in? && (current_user.id == @pearl.user_id)) || current_user_admin?) %>
 <br/>
 <br/>
 <br/>			

@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
+  has_many :posts
+  has_many :discussions
+  
   attr_accessor :login
                   
   validates_length_of :username, :minimum => 4, :allow_blank => false

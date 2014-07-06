@@ -17,4 +17,11 @@
 //= require bootstrap
 //= require underscore
 //= require gmaps/google
+#= require social-share-button
 //= require_tree .
+
+jQuery(function($) {
+$("tr[data-link]").click(function() {
+window.location = this.dataset.link
+});
+})

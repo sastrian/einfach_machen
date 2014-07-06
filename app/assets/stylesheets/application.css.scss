@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require social-share-button
  *= require_tree .
  */
  
@@ -85,6 +86,11 @@ strong
   color: #1A6624;
 }
 
+th
+{
+  color: #1A6624;
+}
+
 .navigation-row
 {
   background-color:#C6F0D3;
@@ -112,3 +118,17 @@ li.spaceditem{
 margin-top: 5px;
 margin-bottom: 5px;
 }
+
+.info_box {
+  margin:5px auto; 
+  border:1px solid #e2e2e2;
+}
+
+.right_border {
+  border-right:1px solid #e2e2e2;
+}
+
+.left_border {
+  border-left:1px solid #e2e2e2;
+}
+

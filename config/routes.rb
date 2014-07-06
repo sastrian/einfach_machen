@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-          
+            
+  resources :forums, only: [:index, :show]
+  resources :discussions
+  resources :posts    
+
   post '/gedanken-perlen(.:format)', to: 'pearls#create'
   
-  get '/gedanken-perlen/new(.:format)', to: 'pearls#new', as: "new_pearl"
-  
+  get '/gedanken-perlen/new(.:format)', to: 'pearls#new', as: "new_pearl"  
   get '/gedanken-perlen/:id/edit(.:format)', to: 'pearls#edit', as: "edit_pearl"
   
   get '/gedanken-perlen/:id(.:format)', to: 'pearls#show', as: "pearl"
@@ -21,8 +24,7 @@ Rails.application.routes.draw do
 
   get 'gedanken-perlen', to: 'pages#pearl', as: "weekly_pearls"
   get 'gedanken-perlen', to: 'pages#pearl', as: "pearls"
-
-  get 'forum', to: 'pages#forum', as: "forum"
+  
 
   get 'kontakt', to: 'pages#contact', as: "contact"
   

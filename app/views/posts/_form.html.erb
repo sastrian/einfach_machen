@@ -1,0 +1,19 @@
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    
+    <%= f.label :body, 'Beitrag', :required => true %>    	
+	<%= f.text_area :body, class: "ckeditor" %>
+
+
+    <%= f.association :discussion, :as => :hidden %>
+
+    <%= f.association :user, :as => :hidden %>
+
+  </div>
+<br />
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

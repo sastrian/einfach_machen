@@ -6,17 +6,31 @@ namespace :db do
     puts "deleted all users"
     
     Pearl.delete_all
-    puts "deleted all pearls"     
+    puts "deleted all pearls"
+    
+    Forum.delete_all
+    puts "deleted all forum"          
     
     FileUtils.rm_rf(Rails.root.join('public', 'uploads'))
     puts "deleting upload folder"
+  end
+  
+    desc "create default forums"
+  task :create_forums => :environment do |t, args| # task with two arguments
+       
+    Forum.create(name: "Allgemeine Diskussionen", description: Faker::Commerce.department())
+    Forum.create(name: "Seelische Schmerzen", description: Faker::Commerce.department())
+    Forum.create(name: "Körperliche Beschwerden", description: Faker::Commerce.department())
+    Forum.create(name: "Einfach Leben", description: Faker::Commerce.department())
+   
+    puts "added defautl forums"
   end
   
   desc "create n_users new random users"
   task :create_users, [:n_users] => :environment do |t, args| # task with two arguments
     args.with_defaults(:n_users => 5)           
     password  = "password"
-    User.create!(username: "sastrian", email: "maro.bader@gmail.com",
+    User.create!(username: "sastrian", email: "maro.bader@gmail.com", admin: true,
                password: password,password_confirmation: password)
     args.n_users.times do |n|
       name  = Faker::Name.name()
@@ -45,15 +59,17 @@ namespace :db do
   
   desc "fills table with small amount of random values"
   task populate_small: :environment do
-    Rake::Task["db:reset"].invoke()
-    Rake::Task["db:create_users"].invoke(7)    
+    Rake::Task["db:reset"].invoke()    
+    Rake::Task["db:create_users"].invoke(7)
+    Rake::Task["db:create_forums"].invoke()    
     Rake::Task["db:create_pearls"].invoke(35)   
   end
   
   desc "fills table with large amount of random values"
   task populate_large: :environment do
     Rake::Task["db:reset"].invoke()
-    Rake::Task["db:create_users"].invoke(100)    
+    Rake::Task["db:create_users"].invoke(100)
+    Rake::Task["db:create_forums"].invoke()    
     Rake::Task["db:create_pearls"].invoke(2000)   
   end
   

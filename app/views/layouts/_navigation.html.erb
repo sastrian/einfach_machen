@@ -13,8 +13,8 @@
         	<%= active_link_to "Einfach machen", root_path, :active => :exclusive, :wrap_tag => :li %>                                    
             <%= active_link_to "Was biete ich", what_do_i_offer_path, :wrap_tag => :li %>            
             <%= active_link_to "Wer bin ich", who_am_i_path, :wrap_tag => :li %>
-            <%= active_link_to "Wochen-Perlen", weekly_pearls_path, :wrap_tag => :li %>
-            <%= active_link_to "Forum", forum_path, :wrap_tag => :li %>            
+            <%= active_link_to "Wochen-Perlen", weekly_pearls_path, :wrap_tag => :li, data: { no_turbolink: true } %>
+            <%= active_link_to "Forum", forums_path, :wrap_tag => :li, data: { no_turbolink: true } %>            
         </ul>        
         <ul class="nav navbar-nav navbar-right">        	
             <%= active_link_to "Kontakt", contact_path, :wrap_tag => :li %>                          
