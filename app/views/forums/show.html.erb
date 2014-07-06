@@ -7,9 +7,10 @@
 <% end %>
 <br/>
 <br/>
+
 <div class="panel panel-success">
   <!-- Default panel contents -->
-  <div class="panel-heading"><strong><%= @forum.name %></strong>
+  <div class="panel-heading"><strong><%= @forum.name %></strong> (<%= @forum.discussions.count %> Diskussionsthemen)
   	<%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success spaced-btn pull-right", data: { no_turbolink: true } %>
   </div>
 
@@ -22,20 +23,18 @@
       </tr>
     </thead>
     <tbody>    	    
-    	<% @forum.discussions.each do |discussion| %>
+    	<% @discussions.each do |discussion| %>
     		<tr data-link="<%= discussion_path(discussion) %>" >
         		<td><strong><%= discussion.title %></strong><br/>erstellt durch <%= discussion.user.username %></td>
-        		<td><%= (discussion.posts.count + 1) %></td>
-        		<td></td>        		       
+        		<td><%= (discussion.posts.count + 1) %></td>        		    		      
       		</tr>
     	<% end %>    	
     </tbody>
   </table>  
 </div>  
-<br/>
-
+<%= will_paginate @discussions, renderer: BootstrapPagination::Rails %> <br/>
 
 <%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success spaced-btn", data: { no_turbolink: true } %>
 <br/>
-<%= link_to 'Alle Foren', forum_path, :class => "btn btn-info btn-xs spaced-btn" %>
+<%= link_to 'Alle Foren', forums_path, :class => "btn btn-info btn-xs spaced-btn" %>
 

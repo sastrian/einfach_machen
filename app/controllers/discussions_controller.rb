@@ -6,7 +6,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions
   # GET /discussions.json
   def index
-    @discussions = Discussion.all
+    @discussions = Discussion.includes(:user).all
   end
 
   # GET /discussions/1

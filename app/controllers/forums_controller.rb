@@ -67,6 +67,7 @@ class ForumsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_forum
       @forum = Forum.friendly.find(params[:id])
+      @discussions = @forum.discussions.paginate(:page => params[:page], :per_page => 6).includes(:user)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

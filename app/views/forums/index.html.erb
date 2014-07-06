@@ -25,7 +25,7 @@
     		<tr data-link="<%= forum_path(forum) %>" >
         		<td><strong><%= forum.name %></strong><br/><%= forum.description %></td>
         		<td><%= forum.discussions.count %></td>
-        		<td></td>        		       
+        		<td><%= (forum.posts.count + 1) %></td>
       		</tr>
     	<% end %>    	
     </tbody>
