@@ -1,13 +1,8 @@
 class PearlsController < ApplicationController
   before_action :set_pearl, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :make_sure_is_owner, only: [:edit, :update, :destroy]
   impressionist :actions=>[:show]
-  # GET /pearls
-  # GET /pearls.json
-  def index
-    @pearls = Pearl.all
-  end
 
   # GET /pearls/1
   # GET /pearls/1.json

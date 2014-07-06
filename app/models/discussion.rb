@@ -5,4 +5,7 @@ class Discussion < ActiveRecord::Base
   has_many :posts
   
   is_impressionable
+  
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end

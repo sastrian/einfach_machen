@@ -49,3 +49,7 @@ gem 'gmaps4rails'
 
 gem 'social-share-button'
 gem 'meta-tags'
+
+gem 'bullet', group: :development
+
+gem 'quiet_assets', group: :development

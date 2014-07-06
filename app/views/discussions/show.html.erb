@@ -1,47 +1,6 @@
-<h3>Übersicht</h3>
 
-<% if user_signed_in? %>
-	Sie sind als <%= current_user.username %> eingeloggt.
-<% else %>
-	Sie sind derzeit nicht eingeloggt. <%= link_to("Login", new_user_session_path) %></li>
-<% end %>
+<%= render partial: "show_discussion", locals: { discussion: @discussion } %>
 
-( <%= @discussion.impressionist_count %> Mal gesehen) 
+<%= link_to 'Neuer Beitrag', new_post_path(discussion_id: @discussion.id), :class => "btn btn-xs btn-success spaced-btn", data: { no_turbolink: true } %>
 <br/>
-<br/>
-<div class="panel panel-success">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><strong><%= @discussion.title %></strong></div>
-
-	<div class="container-fluid">
-		<div class="row info_box">
-			<div class="col-md-3">  
-	        	<%= render partial: "short_user", locals: { user: @discussion.user} %>
-	        </div>
-	        <div class="col-md-9">  
-				<small>verfasst <%= @discussion.created_at %></small>
-				<hr>						        				
-	        	<%= raw @discussion.firstpost %>
-	        </div>
-	    </div>	   
-	     	   
-    	<% @discussion.posts.each do |post| %>
-    		<div class="row info_box">
-				<div class="col-md-3">					
-		        	<%= render partial: "short_user", locals: { user: post.user} %>
-		        </div>
-		        		        		       
-		        <div class="col-md-9">  		        	
-		        	<small>verfasst <%= post.created_at %></small>
-					<hr>						        
-		        	<%= raw post.body %>
-		        </div>
-		    </div>		    
-    	<% end %>    	
-	</div>        
-</div>  
-<br/>
-
-<%= link_to 'Neuer Beitrag', new_post_path(discussion_id: @discussion.id), :class => "btn btn-xs btn-success", data: { no_turbolink: true } %>
-
-
+<%= link_to 'zurück', forum_path(@discussion.forum), :class => "btn btn-info btn-xs spaced-btn" %>

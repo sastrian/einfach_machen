@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706094544) do
+ActiveRecord::Schema.define(version: 20140706175519) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -36,9 +36,11 @@ ActiveRecord::Schema.define(version: 20140706094544) do
     t.integer  "forum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   add_index "discussions", ["forum_id"], name: "index_discussions_on_forum_id"
+  add_index "discussions", ["slug"], name: "index_discussions_on_slug"
   add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
 
   create_table "forums", force: true do |t|

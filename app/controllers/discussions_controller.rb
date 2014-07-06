@@ -1,5 +1,6 @@
 class DiscussionsController < ApplicationController
   before_action :set_discussion, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]  
   impressionist :actions=>[:show]
   
   # GET /discussions
@@ -67,7 +68,7 @@ class DiscussionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_discussion      
-      @discussion = Discussion.includes(posts: :user).find(params[:id])      
+      @discussion = Discussion.includes(posts: :user).friendly.find(params[:id])      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

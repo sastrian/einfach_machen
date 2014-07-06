@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def pearl    
-    @pearls = Pearl.paginate(:page => params[:page], :per_page => 6)
+    @pearls = Pearl.paginate(:page => params[:page], :per_page => 6).includes(:user)
   end
 
   def forum

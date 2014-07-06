@@ -69,6 +69,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfffd', end
 }
 
 a.btn:visited { color: #fff; }
+a.btn:hover { color: #f00; }
+a:hover { color: #f00; }
+a.btn:hover { color: #f00; }
 
 .col-centered
 {
@@ -114,6 +117,13 @@ th
   width: 120px;
 }
 
+.fixed-btn
+{
+  margin: 2px;
+  width: 70px;
+}
+
+
 li.spaceditem{ 
 margin-top: 5px;
 margin-bottom: 5px;
@@ -121,14 +131,30 @@ margin-bottom: 5px;
 
 .info_box {
   margin:5px auto; 
-  border:1px solid #e2e2e2;
+  border:1px solid #e2e2e2;  
 }
 
 .right_border {
   border-right:1px solid #e2e2e2;
+  min-height: 80px;
 }
 
 .left_border {
   border-left:1px solid #e2e2e2;
 }
 
+
+hr
+{
+  margin: 1px;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+small
+{
+  font: normal 9px Helvetica, Arial, sans-serif;  
+}

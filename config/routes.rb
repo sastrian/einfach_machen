@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
             
-  resources :forums, only: [:index, :show]
+  resources :forums, only: [:index, :show], :path => "forum"
   resources :discussions
   resources :posts    
 

@@ -9,14 +9,16 @@
 <br/>
 <div class="panel panel-success">
   <!-- Default panel contents -->
-  <div class="panel-heading"><strong><%= @forum.name %></strong></div>
+  <div class="panel-heading"><strong><%= @forum.name %></strong>
+  	<%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success spaced-btn pull-right", data: { no_turbolink: true } %>
+  </div>
 
   <!-- Table -->
   <table class="table table-hover">
     <thead>
-      <tr>        
-        <th>Diskussion</th>
-        <th>Beiträge</th>           
+      <tr>      	
+      	<td><small><strong>Diskussionsthema</strong></small></td>                
+        <td><small>Beiträge</small></td>           
       </tr>
     </thead>
     <tbody>    	    
@@ -33,5 +35,7 @@
 <br/>
 
 
-<%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success", data: { no_turbolink: true } %>
+<%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success spaced-btn", data: { no_turbolink: true } %>
+<br/>
+<%= link_to 'Alle Foren', forum_path, :class => "btn btn-info btn-xs spaced-btn" %>
 
