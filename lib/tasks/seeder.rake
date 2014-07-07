@@ -4,6 +4,14 @@ namespace :db do
   task local_reset: :environment do
     FileUtils.rm_rf(Rails.root.join('public', 'uploads'))
     puts "deleting upload folder"
+    
+    User.delete_all
+    Forum.delete_all
+    Discussion.delete_all
+    Post.delete_all
+    Impression.delete_all
+    Pearl.delete_all    
+    
   end
   
     desc "create default forums"
@@ -50,7 +58,7 @@ namespace :db do
   end
   
   desc "fills table with small amount of random values"
-  task populate_small: :environment do
+  task populate_dev: :environment do
     Rake::Task["db:reset"].invoke()
     Rake::Task["db:local_reset"].invoke()        
     Rake::Task["db:create_users"].invoke(7)
@@ -59,12 +67,12 @@ namespace :db do
   end
   
   desc "fills table with large amount of random values"
-  task populate_large: :environment do
-    Rake::Task["db:reset"].invoke()
-    Rake::Task["db:local_reset"].invoke()
+  task populate_production: :environment do    
+    Rake::Task["db:local_reset"].invoke()  
     Rake::Task["db:create_users"].invoke(100)
     Rake::Task["db:create_forums"].invoke()    
     Rake::Task["db:create_pearls"].invoke(2000)   
   end
+  
   
 end
