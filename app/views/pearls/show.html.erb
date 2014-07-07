@@ -11,8 +11,6 @@
 <meta property="og:url" content="<%= pearl_path(@pearl) %>"/>
 
 <% end %>
-<%= link_to image_tag('facebook.png'), 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank %>
-
 
 <h3><%= @pearl.title %></h3>
 von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen) 
