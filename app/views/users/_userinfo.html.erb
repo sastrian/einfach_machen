@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+	Sie sind als <%= link_to current_user.username, current_user %> eingeloggt.
+<% else %>
+	Sie sind derzeit nicht eingeloggt. <%= link_to("Login", new_user_session_path) %></li>
+<% end %>
+<br/>
+<br/>

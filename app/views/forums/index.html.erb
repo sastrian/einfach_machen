@@ -1,12 +1,9 @@
-<h3>Gespräche</h3>
+<% title "Forum" %>
 
-<% if user_signed_in? %>
-	Sie sind als <%= current_user.username %> eingeloggt.
-<% else %>
-	Sie sind derzeit nicht eingeloggt. <%= link_to("Login", new_user_session_path) %></li>
-<% end %>
-<br/>
-<br/>
+<h3>Forum</h3>
+
+<%= render "users/userinfo" %>
+
 <div class="panel panel-success">
   <!-- Default panel contents -->
   <div class="panel-heading"><strong>Forum</strong></div>
@@ -25,11 +22,11 @@
     		<tr data-link="<%= forum_path(forum) %>" >
         		<td><strong><%= forum.name %></strong><br/><%= forum.description %></td>
         		<td><%= forum.discussions.count %></td>
-        		<td><%= (forum.posts.count + 1) %></td>
+        		<td><%= (forum.posts.count + forum.discussions.count) %></td>
       		</tr>
     	<% end %>    	
     </tbody>
   </table>  
 </div>  
 <br/>
-Anzahl an registrierten Benutzer: <strong>85</strong>
+Anzahl an registrierten Benutzer: <strong><%= User.all.count %></strong>

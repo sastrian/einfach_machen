@@ -2,7 +2,7 @@ Rails.application.routes.draw do
             
   resources :forums, only: [:index, :show], :path => "forum"
   resources :discussions
-  resources :posts    
+  resources :posts, only: [:edit, :new, :create, :update]    
 
   post '/gedanken-perlen(.:format)', to: 'pearls#create'
   
@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   
-  devise_for :users
+  get 'benutzer/:id' => 'users#show', as: "user"
+  
+  devise_for :users   
   
   get 'wer-bin-ich', to: 'pages#who', as: "who_am_i"
 

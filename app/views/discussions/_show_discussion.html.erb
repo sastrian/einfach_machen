@@ -1,15 +1,9 @@
 <h3>Übersicht</h3>
 
-<% if user_signed_in? %>
-	Sie sind als <%= current_user.username %> eingeloggt.
-<% else %>
-	Sie sind derzeit nicht eingeloggt. <%= link_to("Login", new_user_session_path) %></li>
-<% end %>
+<%= render "users/userinfo" %>
 
 ( <%= discussion.impressionist_count %> Mal gesehen) 
 <br/>
-<br/>
-
 <div class="panel panel-success">
   <!-- Default panel contents -->
   <div class="panel-heading"><strong><%= discussion.title %></strong>
@@ -52,6 +46,11 @@
 					<% end %>
 					<hr>						        
 		        	<%= raw post.body %>
+		        	<% if (post.updated_at > post.created_at) %>
+		        		<br/>
+		        		<br/>
+		        		<small>zuletzt bearbeitet <%= post.updated_at %></small>
+		        	<% end %>
 		        </div>
 		    </div>		    
     	<% end %>    	

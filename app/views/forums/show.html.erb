@@ -1,31 +1,27 @@
+<% title "Forum: " + @forum.name %>
+
 <h3>Übersicht</h3>
 
-<% if user_signed_in? %>
-	Sie sind als <%= current_user.username %> eingeloggt.
-<% else %>
-	Sie sind derzeit nicht eingeloggt. <%= link_to("Login", new_user_session_path) %></li>
-<% end %>
-<br/>
-<br/>
+<%= render "users/userinfo" %>
 
 <div class="panel panel-success">
   <!-- Default panel contents -->
-  <div class="panel-heading"><strong><%= @forum.name %></strong> (<%= @forum.discussions.count %> Diskussionsthemen)
-  	<%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success spaced-btn pull-right", data: { no_turbolink: true } %>
+  <div class="panel-heading"><strong><%= @forum.name %></strong> (<%= @forum.discussions.count %> Diskussionsthemen) 
+  	<%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success spaced-btn pull-right", data: { no_turbolink: true } %>	
   </div>
 
   <!-- Table -->
   <table class="table table-hover">
     <thead>
       <tr>      	
-      	<td><small><strong>Diskussionsthema</strong></small></td>                
-        <td><small>Beiträge</small></td>           
+      	<th><strong>Diskussionsthema</strong></th>                
+        <th>Beiträge</th>           
       </tr>
     </thead>
     <tbody>    	    
     	<% @discussions.each do |discussion| %>
     		<tr data-link="<%= discussion_path(discussion) %>" >
-        		<td><strong><%= discussion.title %></strong><br/>erstellt durch <%= discussion.user.username %></td>
+        		<td><strong><%= discussion.title %></strong><br/><small>erstellt durch <%= link_to discussion.user.username, current_user %> am <%= discussion.created_at %></small></td>
         		<td><%= (discussion.posts.count + 1) %></td>        		    		      
       		</tr>
     	<% end %>    	
@@ -34,7 +30,5 @@
 </div>  
 <%= will_paginate @discussions, renderer: BootstrapPagination::Rails %> <br/>
 
-<%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success spaced-btn", data: { no_turbolink: true } %>
-<br/>
-<%= link_to 'Alle Foren', forums_path, :class => "btn btn-info btn-xs spaced-btn" %>
+<%= link_to 'Neue Diskussion', new_discussion_path(forum_id: @forum.id), :class => "btn btn-xs btn-success spaced-btn", data: { no_turbolink: true } %> <%= link_to 'Alle Foren', forums_path, :class => "btn btn-info btn-xs spaced-btn" %>
 

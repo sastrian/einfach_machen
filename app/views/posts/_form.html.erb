@@ -1,6 +1,4 @@
-<%= simple_form_for(@post) do |f| %>
-  <%= f.error_notification %>
-
+<%= simple_form_for(@post) do |f| %>  
   <div class="form-inputs">
     
     <%= f.label :body, 'Beitrag', :required => true %>    	
@@ -12,8 +10,8 @@
     <%= f.association :user, :as => :hidden %>
 
   </div>
-<br />
+  <br/>  
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "btn btn-primary btn-sm"  %>
   </div>
 <% end %>

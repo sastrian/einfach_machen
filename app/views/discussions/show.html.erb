@@ -1,6 +1,5 @@
+<% title "Diskussion: " + @discussion.title %>
 
 <%= render partial: "show_discussion", locals: { discussion: @discussion } %>
 
-<%= link_to 'Neuer Beitrag', new_post_path(discussion_id: @discussion.id), :class => "btn btn-xs btn-success spaced-btn", data: { no_turbolink: true } %>
-<br/>
-<%= link_to 'zurück', forum_path(@discussion.forum), :class => "btn btn-info btn-xs spaced-btn" %>
+<%= link_to 'Neuer Beitrag', new_post_path(discussion_id: @discussion.id), :class => "btn btn-xs btn-success spaced-btn", data: { no_turbolink: true } %> <%= link_to 'zurück', forum_path(@discussion.forum), :class => "btn btn-info btn-xs spaced-btn" %>

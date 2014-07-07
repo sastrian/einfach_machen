@@ -2,15 +2,6 @@ namespace :db do
   
   desc "drops all tables"  
   task local_reset: :environment do
-    User.delete_all
-    puts "deleted all users"
-    
-    Pearl.delete_all
-    puts "deleted all pearls"
-    
-    Forum.delete_all
-    puts "deleted all forum"          
-    
     FileUtils.rm_rf(Rails.root.join('public', 'uploads'))
     puts "deleting upload folder"
   end
@@ -18,12 +9,13 @@ namespace :db do
     desc "create default forums"
   task :create_forums => :environment do |t, args| # task with two arguments
        
-    Forum.create(name: "Allgemeine Diskussionen", description: Faker::Commerce.department())
-    Forum.create(name: "Seelische Schmerzen", description: Faker::Commerce.department())
-    Forum.create(name: "Körperliche Beschwerden", description: Faker::Commerce.department())
-    Forum.create(name: "Einfach Leben", description: Faker::Commerce.department())
+    Forum.create(name: "Einfach Leben", description: "Allgemeine Fragen")    
+    Forum.create(name: "Fragen zur Hypnose-Therapie", description: "Vor allem: was ist sie und was nicht?")
+    Forum.create(name: "Seelenballast abwerfen um aufzusteigen", description: "Ängste, Phobien, Wut, Aggression, Stress, Blockaden, Leiden...")    
+    Forum.create(name: "Motivieren, Begeistern, Antreiben", description: "Mich optimieren")
+    Forum.create(name: "Sonstiges", description: "und alles andere auch")
    
-    puts "added defautl forums"
+    puts "added default forums"
   end
   
   desc "create n_users new random users"
@@ -59,7 +51,8 @@ namespace :db do
   
   desc "fills table with small amount of random values"
   task populate_small: :environment do
-    Rake::Task["db:reset"].invoke()    
+    Rake::Task["db:reset"].invoke()
+    Rake::Task["db:local_reset"].invoke()        
     Rake::Task["db:create_users"].invoke(7)
     Rake::Task["db:create_forums"].invoke()    
     Rake::Task["db:create_pearls"].invoke(35)   
@@ -68,6 +61,7 @@ namespace :db do
   desc "fills table with large amount of random values"
   task populate_large: :environment do
     Rake::Task["db:reset"].invoke()
+    Rake::Task["db:local_reset"].invoke()
     Rake::Task["db:create_users"].invoke(100)
     Rake::Task["db:create_forums"].invoke()    
     Rake::Task["db:create_pearls"].invoke(2000)   

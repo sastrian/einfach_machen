@@ -1,6 +1,8 @@
 <div class="right_border">
-	erstellt von <strong><%= user.username %></strong>
+	erstellt von <strong><%= link_to user.username, user %></strong>
 	
 	<br/>
 	<small>Mitglied seit <%= user.created_at %></small>
 </div>
+
+

@@ -113,7 +113,13 @@ th
 .spaced-btn
 {
   margin: 5px;
-  width: 120px;
+  width: 120px;  
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
 
 .fixed-btn

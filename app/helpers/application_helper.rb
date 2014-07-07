@@ -7,5 +7,9 @@ module ApplicationHelper
  def current_user_admin?
    user_signed_in? && current_user.admin?  
  end
+ 
+ def title(page_title)
+    content_for(:title) { page_title }
+  end
 
 end

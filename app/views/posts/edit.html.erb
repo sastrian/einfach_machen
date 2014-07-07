@@ -1,6 +1,5 @@
-<h3>Editing post</h3>
+<h3>Beitrag ändern für <strong><%= @post.discussion.title %></strong></h3>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= render partial: "discussions/show_discussion", locals: { discussion: @post.discussion } %>
