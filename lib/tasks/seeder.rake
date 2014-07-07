@@ -24,7 +24,7 @@ namespace :db do
     password  = "password"
     User.create!(username: "sastrian", email: "maro.bader@gmail.com", admin: true,
                password: password,password_confirmation: password)
-    args.n_users.times do |n|
+    5.times do |n|
       name  = Faker::Name.name()
       email = Faker::Internet.email(name)      
       User.create!(username: name, email: email,
@@ -39,7 +39,7 @@ namespace :db do
     args.with_defaults(:n_pearls => 25)          	
   	users = User.all  	
   	
-    args.n_pearls.times do |n|        
+    18.times do |n|        
         body = Faker::Lorem.sentences(rand(10..20)).to_sentence()
   	    title = Faker::Company.name()
   	    image = File.open(File.join(Rails.root,"app/assets/images/p" + (1 + (n.modulo(18))).to_s + ".jpg"  ))
