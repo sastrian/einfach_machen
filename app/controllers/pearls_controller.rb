@@ -73,7 +73,7 @@ class PearlsController < ApplicationController
 
   def make_sure_is_owner
     @pearl = Pearl.friendly.find(params[:id])
-    if (user_signed_in? && current_user.id == @pearl.user.id)
+    if (user_signed_in? && ((current_user.id == @pearl.user.id) || current_user.admin? ))
 
       else
       respond_to do |format|

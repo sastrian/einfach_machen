@@ -2,8 +2,6 @@
 
 <%= render "users/userinfo" %>
 
-( <%= discussion.impressionist_count %> Mal gesehen) 
-<br/>
 <div class="panel panel-success">
   <!-- Default panel contents -->
   <div class="panel-heading"><strong><%= discussion.title %></strong>
@@ -55,6 +53,5 @@
 		    </div>		    
     	<% end %>    	
 	</div>        
-</div>  
-
-
+</div>
+<small class="pull-right">(<%= discussion.impressionist_count %> Mal gesehen)</small>  

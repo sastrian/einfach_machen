@@ -12,9 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ckeditor-jquery
 //= require tinymce-jquery
-//= require turbolinks
 //= require bootstrap
 //= require underscore
 //= require gmaps/google

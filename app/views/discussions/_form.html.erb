@@ -1,9 +1,11 @@
+<%= tinymce %>
+
 <%= simple_form_for([@discussion]) do |f| %>  
   <div class="form-inputs">  	
     <%= f.input :title %>
     
     <%= f.label :firstpost, 'Beitrag', :required => true %>    	
-	<%= f.text_area :firstpost, class: "ckeditor" %>
+	<%= f.text_area :firstpost, class: "tinymce", :rows => 25, :cols => 120 %>	
 
     <%= f.association :user, :as => :hidden %>
 

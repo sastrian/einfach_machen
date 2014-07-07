@@ -1,6 +1,14 @@
 toolbar:
-  - styleselect | bold italic | link image | undo redo
-  - table | fullscreen
+  - undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link forecolor backcolor | fullscreen emoticons | preview
 plugins:
   - table
   - fullscreen
+  - colorpicker
+  - textcolor
+  - emoticons
+  - preview
+  - link
+  
+menubar: false
+
+statusbar: false

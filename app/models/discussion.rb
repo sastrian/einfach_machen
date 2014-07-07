@@ -8,4 +8,6 @@ class Discussion < ActiveRecord::Base
   
   extend FriendlyId
   friendly_id :title, use: :slugged
+  
+  validates_length_of :title, :minimum => 5
 end
