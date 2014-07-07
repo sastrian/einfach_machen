@@ -1,9 +1,12 @@
+<%= tinymce %>
+
 <%= simple_form_for(@pearl) do |f| %>
   <div class="form-inputs">
   	<%= f.input :title, :required => true, label: "Titel" %>                 
     
 	<%= f.label :body, 'Gedanken', :required => true %>    	
-	<%= f.text_area :body, class: "ckeditor" %>
+	<%= f.text_area :body, class: "tinymce", :rows => 25, :cols => 120 %>
+	
 	<br />
    
 	<%= f.input :image, label: "Bild" %>

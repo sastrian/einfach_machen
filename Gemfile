@@ -52,6 +52,8 @@ gem 'impressionist'
 
 gem 'ckeditor_rails'
 
+gem 'tinymce-rails'
+
 gem 'active_link_to'
 gem 'gmaps4rails'
 
