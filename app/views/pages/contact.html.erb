@@ -14,6 +14,9 @@
 			  <%=  f.input :name, label: "Ihre Name", :required => true %>
 			  <%=  f.input :email, label: "Ihre Email", :required => true %>
 			  <%=  f.input :message, hint: "Nutzen Sie dieses Forumlar bitte lediglich zur Kontaktaufnahme und zur Verabredung eines kostenlosen Erstgesprächs. Haben Sie bitte Verständnis, dass ich keine inhaltlichen Fragen per Email beantworten werde.", :required => true, label: "Nachricht", :as => :text, :required => false, :input_html => {:rows => 6} %>   
+			  
+			  <%= f.simple_captcha :label => "Enter numbers.." %>
+			  
 			  <%=  f.button :submit, 'Abschicken', :class=> "btn btn-primary" %>
 			
 			<% end %>

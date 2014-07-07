@@ -62,3 +62,5 @@ gem 'meta-tags'
 gem 'bullet', group: :development
 
 gem 'quiet_assets', group: :development
+
+gem 'simple_captcha2', require: 'simple_captcha'

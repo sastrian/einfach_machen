@@ -20,14 +20,19 @@ class PagesController < ApplicationController
   end
   
   def contacted
-    @contact = Contact.new(params[:contact])
-    @contact.request = request
-    if @contact.deliver      
-      flash.now[:notice] = 'Thank you for your message!'
+    @contact = Contact.new(params[:contact])    
+    if simple_captcha_valid?
+      @contact.request = request
+      if @contact.deliver      
+        flash.now[:notice] = 'Thank you for your message!'
+      else
+        flash.now[:error] = 'Cannot send message.'
+        render :contact
+      end
     else
-      flash.now[:error] = 'Cannot send message.'
+      flash.now[:error] = 'Captche falsch.'
       render :contact
-    end
+    end       
   end
   
 end
