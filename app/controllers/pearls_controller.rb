@@ -13,8 +13,9 @@ class PearlsController < ApplicationController
   # GET /pearls/1.json
   def show
     impressionist(@pearl)
-    @new_comment = @pearl.comments.create    
-    @new_comment.user = current_user    
+    @comment = Comment.new
+    @comment.commentable = @pearl       
+    @comment.user = current_user    
   end
 
   # GET /pearls/new
@@ -79,7 +80,7 @@ class PearlsController < ApplicationController
   end
 
   def make_sure_is_owner
-    @pearl = Pearl.friendly.find(params[:id])
+    @pearl = Pearl.friendly.find(params[:id]).includes(:comments)
     if (user_signed_in? && ((current_user.id == @pearl.user.id) || current_user.admin? ))
 
       else

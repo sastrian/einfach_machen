@@ -1,0 +1,12 @@
+<%= simple_form_for comment do |f| %>
+	<div class="form-inputs">  
+		<%= f.association :user, :as => :hidden %>
+		<%= f.input :commentable_id, :as => :hidden %>
+		<%= f.input :commentable_type, :as => :hidden %>  		
+		<%= f.hint 'Beitrag kommentieren' %>			 
+		<%= f.text_area :comment, hint: "add new commet", :rows => 3, :cols => 60 %>	
+	</div>  	
+  	<div class="form-actions">
+    	<%= f.button :submit, "Kommentar hinzufügen" ,:class => "btn btn-primary btn-xs"  %>
+  	</div>
+<% end %>

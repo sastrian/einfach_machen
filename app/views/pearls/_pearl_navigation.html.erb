@@ -1,0 +1,17 @@
+<div class="row">
+<% if pearl.previous.presence %>	
+	<a href="<%= pearl_path(pearl.previous) %>">		
+		<button type="button" class="btn btn-default btn-xs spaced-btn">
+	  		<span class="glyphicon glyphicon-chevron-left"></span> Vorherige
+		</button>
+	</a>	
+	<% end %>
+	<%= link_to 'Übersicht', pearls_path(), :class => "btn btn-info btn-xs spaced-btn" %>
+	<% if pearl.next.presence %>	
+	<a href="<%= pearl_path(pearl.next) %>">		
+		<button type="button" class="btn btn-default btn-xs spaced-btn">
+	  		<span class="glyphicon glyphicon-chevron-right"></span> Nächste
+		</button>
+	</a>	
+<% end %>
+</div>

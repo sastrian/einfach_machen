@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:edit, :new, :create, :update]    
   resources :pearls
   
-  resources :comments
+  resources :comments, only: [:create]
        
   root to: 'pages#home'
   
