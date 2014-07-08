@@ -3,34 +3,19 @@ Rails.application.routes.draw do
   resources :forums, only: [:index, :show], :path => "forum"
   resources :discussions
   resources :posts, only: [:edit, :new, :create, :update]    
-
-  post '/gedanken-perlen(.:format)', to: 'pearls#create'
+  resources :pearls
   
-  get '/gedanken-perlen/new(.:format)', to: 'pearls#new', as: "new_pearl"  
-  get '/gedanken-perlen/:id/edit(.:format)', to: 'pearls#edit', as: "edit_pearl"
-  
-  get '/gedanken-perlen/:id(.:format)', to: 'pearls#show', as: "pearl"
-  patch '/gedanken-perlen/:id(.:format)', to: 'pearls#update' 
-  put '/gedanken-perlen/:id(.:format)', to: 'pearls#update' 
-  delete '/gedanken-perlen/:id(.:format)', to: 'pearls#destroy'   
-
+  resources :comments
+       
   root to: 'pages#home'
   
-  get 'benutzer/:id' => 'users#show', as: "user"
-  
+  get 'benutzer/:id' => 'users#show', as: "user"  
   devise_for :users   
   
   get 'wer-bin-ich', to: 'pages#who', as: "who_am_i"
-
-  get 'was-biete-ich-an', to: 'pages#what', as: "what_do_i_offer"
-
-  get 'gedanken-perlen', to: 'pages#pearl', as: "weekly_pearls"
-  get 'gedanken-perlen', to: 'pages#pearl', as: "pearls"
-  
-
-  get 'kontakt', to: 'pages#contact', as: "contact"
-  
-  post 'pages/contacted'
+  get 'was-biete-ich-an', to: 'pages#what', as: "what_do_i_offer"   
+  get 'kontakt', to: 'pages#contact', as: "contact"  
+  post 'kontaktiert', to: 'pages#contacted', as: "contacted"
   
 
   # The priority is based upon order of creation: first created -> highest priority.

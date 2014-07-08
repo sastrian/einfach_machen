@@ -26,7 +26,33 @@ von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen)
     	</a>
     <% end %>	        	        
     <br />
-    <%= raw @pearl.body %>    
+    <%= raw @pearl.body %>
+    
+    <br />
+    
+    <% @pearl.comments.each do |comment| %>
+    	<% if (comment.user.present?) %>
+	    	<div class="row">
+	    		<div class="col-xs-3">					
+			        <%= render partial: "discussions/short_user", locals: { user: comment.user} %>		        						
+			    </div>		        		        		       
+			    <div class="col-xs-9 nopadding">
+			    	 <%= comment.comment %> 		
+	    		</div>	    			
+	    	</div>
+    	<% end %>	    
+    <% end %>
+    
+    <% if ((user_signed_in? && (current_user.id == @pearl.user_id)) || current_user_admin?) %>
+    	<%= simple_form_for @new_comment do |f| %>
+  			<%= f.association :user %>
+  			<%= f.input :commentable %>
+  			<%= f.input :title %>
+  			<%= f.text_area :comment %>
+  			<%= f.submit %>
+		<% end %>
+	<% end %>
+        
 </div>
 <br/>
 <% if @pearl.previous.presence %>	
@@ -36,7 +62,7 @@ von <%= @pearl.user.username %> ( <%= @pearl.impressionist_count %> Mal gesehen)
 	</button>
 </a>	
 <% end %>
-<%= link_to 'Übersicht', weekly_pearls_path(), :class => "btn btn-info btn-xs spaced-btn" %>
+<%= link_to 'Übersicht', pearls_path(), :class => "btn btn-info btn-xs spaced-btn" %>
 <% if @pearl.next.presence %>	
 <a href="<%= pearl_path(@pearl.next) %>">		
 	<button type="button" class="btn btn-default btn-xs spaced-btn">

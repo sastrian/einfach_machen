@@ -8,7 +8,7 @@
 <div class="row-fluid">
 	<div class="col-md-8">
 		<div class="container-fluid">
-			<%= simple_form_for @contact, :url => pages_contacted_path, :html => {class: 'form-horizontal' } do |f| %>
+			<%= simple_form_for @contact, :url => contacted_path, :html => {class: 'form-horizontal' } do |f| %>
 			
 			  <%=  f.input :nickname, :as => :hidden %>
 			  <%=  f.input :name, label: "Ihre Name", :required => true %>

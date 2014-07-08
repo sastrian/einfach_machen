@@ -8,13 +8,6 @@ class PagesController < ApplicationController
   def what
   end
 
-  def pearl    
-    @pearls = Pearl.paginate(:page => params[:page], :per_page => 6).includes(:user)
-  end
-
-  def forum
-  end
-
   def contact
     @contact = Contact.new
   end

@@ -4,10 +4,17 @@ class PearlsController < ApplicationController
   before_action :make_sure_is_owner, only: [:edit, :update, :destroy]
   impressionist :actions=>[:show]
 
+  def index    
+    @pearls = Pearl.paginate(:page => params[:page], :per_page => 6).includes(:user)
+  end
+
+
   # GET /pearls/1
   # GET /pearls/1.json
   def show
     impressionist(@pearl)
+    @new_comment = @pearl.comments.create    
+    @new_comment.user = current_user    
   end
 
   # GET /pearls/new
@@ -68,7 +75,7 @@ class PearlsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def pearl_params
-    params.require(:pearl).permit(:user_id, :body, :title, :image, :remove_image)
+    params.require(:pearl).permit(:user_id, :body, :title, :image, :remove_image, :comments_attributes => [:id, :comment])
   end
 
   def make_sure_is_owner

@@ -4,6 +4,8 @@ class Pearl < ActiveRecord::Base
   belongs_to :user
   mount_uploader :image, ImageUploader   
   is_impressionable
+
+  acts_as_commentable
   
   scope :next, lambda {|id| where("id > ?",id).order("id ASC") } # this is the default ordering for AR
   scope :previous, lambda {|id| where("id < ?",id).order("id DESC") }
